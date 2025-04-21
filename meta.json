@@ -1,17 +1,11 @@
 {
     "id": "Condensed_UI",
-    "title": "Condensed UI",
     "name": "Condensed UI",
-    "automatic-version-check": true,
-    "requires-steamodded": true,
-    "requires-talisman": false,
+    "prefix": "CondensedUI",
     "author": ["Hoversquid"],
     "description": "Pushes all the UI to the left and adds a Blind Tracker for the Ante.",
-    "prefix": "CondensedUI",
     "main_file": "Condensed_UI.lua",
     "priority": 3,
-    "categories": ["Quality of Life"],
-    "repo": "https://github.com/Hoversquid/Condensed_UI",
     "badge_colour": "c7638f",
     "dependencies": [
         "Steamodded (>=1.*)"
