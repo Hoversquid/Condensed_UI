@@ -1,4 +1,3 @@
--- Class
 Condensed_UI = Object:extend()
 function Condensed_UI:init(args)
   local predict = args.predict
@@ -14,7 +13,6 @@ function Condensed_UI:init(args)
 end
 
 function Condensed_UI:reload_UI(make_new)
-  -- if self.uibox then self.uibox:remove() end
   make_new = make_new or false
   local def = {n=G.UIT.ROOT, config={align = "cm",colour=G.C.CLEAR}, nodes={
     {n=G.UIT.C, config={align="cm",minw=2.075, color=G.C.DYN_UI.BOSS_DARK},nodes={
@@ -40,13 +38,13 @@ end
 
 function Condensed_UI:remove_cleared_blind(type)
   local state = G.GAME.round_resets.blind_states[type]
-  print("type: " .. type)
-  print(" - state: " .. state)
+  -- print("type: " .. type)
+  -- print(" - state: " .. state)
   if state == "Defeated" or state == "Skipped" or state == "Current" then
     local check = self.uibox and self.uibox:get_UIE_by_ID(type.."_sprite_UIBox")
     if check then
       check:remove()
-      print("REMOVING: " .. type.."_sprite_UIBox")
+      -- print("REMOVING: " .. type.."_sprite_UIBox")
     end
     return true
   end
@@ -59,8 +57,8 @@ function Condensed_UI:get_sprite(type, making_new)
   local UI_Color
   if type == "Boss" then UI_Color = G.C.DYN_UI.BOSS_DARK
   else UI_Color = G.C.DYN_UI.BOSS_MAIN end
-  print("TYPE: " .. type)
-  sayTable(UI_Color, "UI_COLOR")
+  -- print("TYPE: " .. type)
+  -- sayTable(UI_Color, "UI_COLOR")
   local spriteUIBox
   if not making_new and self:remove_cleared_blind(type) then
     spriteUIBox = nil
@@ -106,9 +104,9 @@ if label ~= nil then
       trailingLabel = trailingLabel .. "-"
   end
 
-  print("\n"..tableLabel.."\n\n"..printTable(table, indent, 3).."\n"..trailingLabel)
+  -- print("\n"..tableLabel.."\n\n"..printTable(table, indent, 3).."\n"..trailingLabel)
   else
-      print(printTable(table, indent, 3))
+      -- print(printTable(table, indent, 3))
   end
 end
 
@@ -175,20 +173,13 @@ function Condensed_UI:create_ante_sprites(predict, types)
               blind_sprite.hover_tilt = 0
             end
           end
-
-          -- local blind_preview_ui = SMODS.Mods.AntePreview.config.custom_UI and blind.preview_ui and blind:preview_ui()
-          -- local blind_preview_ui = blind.preview_ui and blind:preview_ui()
-          -- local blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante + 1) * blind.mult * G.GAME.starting_params.ante_scaling
           local tag = prediction[choice].tag
           local tag_sprite
-          -- local tag_preview_ui
           if tag then
               local tag_object
               self:set_orbitals(choice)
               tag_object = Tag(tag, nil, choice)
               _, tag_sprite = tag_object:generate_UI(0.375)
-
-              -- tag_preview_ui = G.P_TAGS[tag].preview_ui and G.P_TAGS[tag]:preview_ui(tag_object) or nil
 
           end
 
@@ -299,7 +290,7 @@ function Tag:generate_UI(_size, tag_offset)
               end
 
               self:get_uibox_table(tag_sprite)
-              sayTable(self:get_uibox_table(tag_sprite)["ability_UIBox_table"], "UI BOX", true)
+              -- sayTable(self:get_uibox_table(tag_sprite)["ability_UIBox_table"], "UI BOX", true)
               _self.config.h_popup =  G.UIDEF.card_h_popup(_self)
               _self.config.h_popup_config = (_self.T.x > G.ROOM.T.w*0.4) and
               {align = 'cl', offset =tag_offset,parent = _self} or
@@ -348,7 +339,6 @@ function Tag:remove()
   self.HUD_tag:remove()
 end
 
--- local create_UI_HUD_hook = G.create_UIBox_HUD
 function create_UIBox_HUD()
   local scale = 0.4
   local stake_sprite = get_stake_sprite(G.GAME.stake or 1, 0.5)
@@ -393,8 +383,9 @@ function create_UIBox_HUD()
       {n=G.UIT.C, config={align = "cm", minw=2.03}, nodes={}},
     }},
     {n=G.UIT.R, config={minh = spacing*14},nodes={}},
+    --  padding = 0.025
     {n=G.UIT.R, config={align = "cm"}, nodes={
-      {n=G.UIT.C, config={id = 'hud_ante',align = "cm", padding = 0.05, minw = 1.45, minh = 1, colour = temp_col, emboss = 0.05, r = 0.1}, nodes={
+      {n=G.UIT.C, config={id = 'hud_ante',align = "cm", padding = -0.03, minw = 1.45, minh = 1, colour = temp_col, emboss = 0.05, r = 0.1}, nodes={
         {n=G.UIT.R, config={align = "cm", minh = 0.33, maxw = 1.35}, nodes={
           {n=G.UIT.T, config={text = localize('k_ante'), scale = 0.85*scale, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
         }},
@@ -406,7 +397,7 @@ function create_UIBox_HUD()
         }},
       }},
       {n=G.UIT.C, config={minw = spacing},nodes={}},
-      {n=G.UIT.C, config={align = "cm", padding = 0.05, minw = 1.45, minh = 1, colour = temp_col, emboss = 0.05, r = 0.1}, nodes={
+      {n=G.UIT.C, config={align = "cm", padding = -0.03, minw = 1.45, minh = 1, colour = temp_col, emboss = 0.05, r = 0.1}, nodes={
         {n=G.UIT.R, config={align = "cm", maxw = 1.35}, nodes={
           {n=G.UIT.T, config={text = localize('k_round'), minh = 0.33, scale = 0.85*scale, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
         }},
@@ -478,7 +469,7 @@ contents.buttons = {
         {n=G.UIT.T, config={text = localize('b_options'), scale = scale, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
       }},
     }},
-    {n=G.UIT.C, config={align = "cm", minh = 0.65, minw = 0.275}},
+    {n=G.UIT.C, config={align = "cm", minh = 0.25, minw = 0.275}},
     {n=G.UIT.C, config={id = 'run_info_button', align = "cm", minh = 0.65, minw = 2.25, r = 0.1, hover = true, colour = G.C.RED, button = "run_info", shadow = true}, nodes={
         {n=G.UIT.R, config={align = "cm", padding = 0, maxw = 1.4}, nodes={
           {n=G.UIT.T, config={text = localize('b_run_info_1'), scale = 1.2*scale, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
@@ -489,7 +480,7 @@ contents.buttons = {
       }},
     }}
 }
-  return {n=G.UIT.ROOT, config = {align = "cm", padding = -0.815,colour = G.C.UI.TRANSPARENT_DARK}, nodes={
+  return {n=G.UIT.ROOT, config = {align = "cm", padding = -0.695, colour = G.C.UI.TRANSPARENT_DARK}, nodes={
     {n=G.UIT.R, config = {align = "cm", padding= 0.05, colour = G.C.DYN_UI.MAIN, r=0.1}, nodes={
       {n=G.UIT.R, config={align = "cm", colour = G.C.DYN_UI.BOSS_DARK, r=0.1, minh = 30, padding = 0.08}, nodes={
         {n=G.UIT.R, config={align = "cm", minh = 0.3}, nodes={}},
@@ -511,24 +502,15 @@ contents.buttons = {
 end
 
 function Condensed_UI:reroll_boss()
-  print("REROLLING BOSS")
+  -- print("REROLLING BOSS")
   local check = self.uibox:get_UIE_by_ID("Boss_sprite_UIBox")
   if check then
-    print("FOUND BOSS: " .. check.config.id)
+    -- print("FOUND BOSS: " .. check.config.id)
     check:remove()
     self.blind_sprites["Boss"] = self:create_ante_sprites(false, {"Boss"})["Boss"]
     self:reload_UI()
   end
 end
-
--- local debugplus_reroll_boss_hook = global.handleKeys
--- global.handleKeys = function(controller, key, dt)
---   local prevBoss = G.blind_select_opts.boss.parent
---   debugplus_reroll_boss_hook(controller, key, dt)
---   if G.blind_select_opts.boss.parent ~= prevBoss then
---     G.HUD_blind_tracker:reroll_boss()
---   end
--- end
 
 function set_screen_positions()
   if G.STAGE == G.STAGES.RUN then
@@ -600,80 +582,69 @@ end
 
 local start_run_hook = Game.start_run
 function Game:start_run(args)
-  print("START RUN")
+  -- print("START RUN")
   start_run_hook(self,args)
-  G.HUD_blind_tracker = Condensed_UI{predict = false}
+  G.E_MANAGER:add_event(Event({
+    trigger = 'after',
+    delay = 0.25,
+    func = function()
+      G.HUD_blind_tracker = Condensed_UI{predict = false}
+      return true
+    end}))
+
 end
 
 local new_round_hook = new_round
 function new_round()
-  print("NEW ROUND")
   new_round_hook()
-  if G.HUD_blind_tracker then G.HUD_blind_tracker:reload_UI() end
+  G.E_MANAGER:add_event(Event({
+    trigger = 'after',
+    delay = 0.25,
+    func = function()
+      if G.HUD_blind_tracker then G.HUD_blind_tracker:reload_UI() end
+      return true
+    end}))
 end
 
 local reroll_boss_hook = G.FUNCS.reroll_boss
 function G.FUNCS.reroll_boss(e)
   reroll_boss_hook(e)
-  G.E_MANAGER:add_event(Event({ func = function()
-  if G.HUD_blind_tracker then G.HUD_blind_tracker:reroll_boss() end
-  return true
-  end}))
+  G.E_MANAGER:add_event(Event({
+    trigger = 'after',
+    delay = 0.25,
+    func = function()
+      if G.HUD_blind_tracker then G.HUD_blind_tracker:reroll_boss() end
+      return true
+    end}))
 end
 local skip_blind_hook = G.FUNCS.skip_blind
 G.FUNCS.skip_blind = function(e)
   skip_blind_hook(e)
-  print("SKIPPING BLIND")
-  if G.HUD_blind_tracker then G.HUD_blind_tracker:reload_UI() end
+  G.E_MANAGER:add_event(Event({
+    trigger = 'after',
+    delay = 0.25,
+    func = function()
+    if G.HUD_blind_tracker then G.HUD_blind_tracker:reload_UI() end
+    return true
+    end}))
 end
 
-local evaluate_round_hook = G.FUNCS.evaluate_round
-function G.FUNCS.evaluate_round()
-    evaluate_round_hook()
-    if G.GAME.blind_on_deck == "Boss" then
-        G.E_MANAGER:add_event(Event({
-            func = function()
-              G.HUD_blind_tracker.uibox:remove()
-              G.HUD_blind_tracker = Condensed_UI{predict = true}
-              return true
-            end
-        }))
-    end
+local cash_out_hook = G.FUNCS.cash_out
+function G.FUNCS.cash_out(e)
+  cash_out_hook(e)
+  if G.GAME.round_resets.blind_states["Small"] ~= "Defeated" then
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.25,
+        func = function()
+          print("RELOADING UI ON SMALL BLIND")
+          G.HUD_blind_tracker.uibox:remove()
+          G.HUD_blind_tracker = Condensed_UI{predict = false}
+          return true
+        end
+    }))
+  end
 end
-
--- HAS ORBITALS:
--- P5SKBAWF
--- TP7ZQBH4
-
-SMODS.Blind:take_ownership("ox", {
-  loc_vars = function(self)
-      return { vars = { localize(G.GAME.current_round.most_played_poker_hand, 'poker_hands') } }
-  end,
-  preview_ui = function(self)
-      local hand_center = SMODS.PokerHands[G.GAME.current_round.most_played_poker_hand]
-      local hand_sprite = Sprite(0, 0, 1, 0.13 / 0.53,
-          G.ASSET_ATLAS[hand_center.atlas or "nap_poker_hands"], hand_center.pos or { x = 0, y = 0 })
-      return { n = G.UIT.O, config = { object = hand_sprite } }
-  end
-}, true)
-
-SMODS.Tag:take_ownership("handy", {
-  preview_ui = function(self, tag)
-      return { n = G.UIT.T, config = { text = localize("$") .. tostring(tag.config.dollars_per_hand * (G.GAME.hands_played or 0)), colour = G.C.MONEY, scale = 0.4 } }
-  end
-}, true)
-
-SMODS.Tag:take_ownership("garbage", {
-  preview_ui = function(self, tag)
-      return { n = G.UIT.T, config = { text = localize("$") .. tostring(tag.config.dollars_per_discard * (G.GAME.unused_discards)), colour = G.C.MONEY, scale = 0.4 } }
-  end
-}, true)
-
-SMODS.Tag:take_ownership("skip", {
-  preview_ui = function(self, tag)
-      return { n = G.UIT.T, config = { text = localize("$") .. tostring(tag.config.skip_bonus * ((G.GAME.skips + 1) or 1)), colour = G.C.MONEY, scale = 0.4 } }
-  end
-}, true)
 
 function Condensed_UI:create_UIBox_blind_popup(blind, choice, vars)
   local blind_text = {}
@@ -681,7 +652,7 @@ function Condensed_UI:create_UIBox_blind_popup(blind, choice, vars)
   local _reward = true
   if G.GAME.modifiers.no_blind_reward and G.GAME.modifiers.no_blind_reward[choice] then _reward = nil end
 
-  sayTable(_dollars, "DOLLARS")
+  -- sayTable(_dollars, "DOLLARS")
   local target = {type = 'raw_descriptions', key = blind.key, set = 'Blind', vars = vars or blind.vars}
   if blind.collection_loc_vars and type(blind.collection_loc_vars) == 'function' then
       local res = blind:collection_loc_vars() or {}
@@ -723,39 +694,11 @@ function Condensed_UI:create_UIBox_blind_popup(blind, choice, vars)
  }}
 end
 
--- SMODS.Tag:take_ownership("orbital", {
---   preview_ui = function(self, tag)
---       local hand_center = SMODS.PokerHands[tag.ability.orbital_hand]
---       local hand_sprite = Sprite(0, 0, 1, 0.13 / 0.53,
---           G.ASSET_ATLAS[hand_center.atlas or "nap_poker_hands"], hand_center.pos or { x = 0, y = 0 })
---       return { n = G.UIT.O, config = { object = hand_sprite } }
---   end
--- }, true)
-
--- SMODS.Atlas({
---   key = "poker_hands",
---   path = "hands.png",
---   px = 53,
---   py = 13,
--- })
-
--- for index, handname in ipairs({
---   "High Card",
---   "Pair",
---   "Two Pair",
---   "Three of a Kind",
---   "Straight",
---   "Flush",
---   "Full House",
---   "Four of a Kind",
---   "Straight Flush",
---   "Five of a Kind",
---   "Flush House",
---   "Flush Five",
--- }) do
---   SMODS.PokerHand:take_ownership(handname, {
---       atlas = "nap_poker_hands",
---       pos = { x = 0, y = index }
---   }, true)
--- end
-
+SMODS.Tag:take_ownership("orbital", {
+  preview_ui = function(self, tag)
+      local hand_center = SMODS.PokerHands[tag.ability.orbital_hand]
+      local hand_sprite = Sprite(0, 0, 1, 0.13 / 0.53,
+          G.ASSET_ATLAS[hand_center.atlas or "nap_poker_hands"], hand_center.pos or { x = 0, y = 0 })
+      return { n = G.UIT.O, config = { object = hand_sprite } }
+  end
+}, true)
