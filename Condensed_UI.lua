@@ -349,8 +349,8 @@ function create_UIBox_HUD()
   local temp_col = G.C.DYN_UI.BOSS_MAIN
   local temp_col2 = G.C.DYN_UI.BOSS_DARK
   contents.round = {
-    {n=G.UIT.R, config={align = "cm"}, nodes={
-      {n=G.UIT.C, config={id = 'hud_hands',align = "cm", padding = 0.05, minw = 1.45, colour = temp_col, emboss = 0.05, r = 0.1}, nodes={
+    {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
+      {n=G.UIT.C, config={id = 'hud_hands',align = "cm", padding = 0.05, minw = 1.415, colour = temp_col, emboss = 0.05, r = 0.1}, nodes={
         {n=G.UIT.R, config={align = "cm", minh = 0.33, maxw = 1.35}, nodes={
           {n=G.UIT.T, config={text = localize('k_hud_hands'), scale = 0.85*scale, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
         }},
@@ -359,33 +359,33 @@ function create_UIBox_HUD()
         }}
       }},
       {n=G.UIT.C, config={minw = spacing},nodes={}},
-      {n=G.UIT.C, config={align = "cm", padding = 0.05, minw = 1.45, colour = temp_col, emboss = 0.05, r = 0.1}, nodes={
+      {n=G.UIT.C, config={align = "cm", padding = 0.05, minw = 1.415, colour = temp_col, emboss = 0.05, r = 0.1}, nodes={
         {n=G.UIT.R, config={align = "cm", minh = 0.33, maxw = 1.35}, nodes={
           {n=G.UIT.T, config={text = localize('k_hud_discards'), scale = 0.85*scale, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
         }},
         {n=G.UIT.R, config={align = "cm"}, nodes={
-          {n=G.UIT.R, config={align = "cm", r = 0.1, minw = 1.2, colour = temp_col2}, nodes={
+          {n=G.UIT.R, config={align = "cm", r = 0.1, minw = 1.45, colour = temp_col2}, nodes={
             {n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME.current_round, ref_value = 'discards_left'}}, font = G.LANGUAGES['en-us'].font, colours = {G.C.RED},shadow = true, rotate = true, scale = 2*scale}),id = 'discard_UI_count'}},
           }}
         }},
       }},
-      {n=G.UIT.C, config={align = "cm", minw=2.075}, nodes={}},
+      {n=G.UIT.C, config={align = "cm", minw=2.12}, nodes={}},
     }},
-    {n=G.UIT.R, config={minh = spacing},nodes={}},
+    {n=G.UIT.R, config={minh = spacing*8},nodes={}},
     {n=G.UIT.R, config={align = "cm"}, nodes={
-      {n=G.UIT.C, config={align = "cm", padding = 0.05, minw = 1.45*2 + spacing, minh = 1.275, colour = temp_col, emboss = 0.05, r = 0.1}, nodes={
+      {n=G.UIT.C, config={align = "cm", padding = 0.05, minw = 1.415*2 + 0.15, minh = 1.225, colour = temp_col, emboss = 0.05, r = 0.1}, nodes={
         {n=G.UIT.R, config={align = "cm"}, nodes={
-          {n=G.UIT.C, config={align = "cm", r = 0.1, minw = 1.28*2+spacing, minh = 1.2, colour = temp_col2}, nodes={
+          {n=G.UIT.C, config={align = "cm", r = 0.1, minw = 1.28*2+spacing, minh = 1, colour = temp_col2}, nodes={
             {n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME, ref_value = 'dollars', prefix = localize('$')}}, maxw = 1.35, colours = {G.C.MONEY}, font = G.LANGUAGES['en-us'].font, shadow = true,spacing = 2, bump = true, scale = 2.2*scale}), id = 'dollar_text_UI'}}
         }},
         }},
       }},
-      {n=G.UIT.C, config={align = "cm", minw=2.03}, nodes={}},
+      {n=G.UIT.C, config={align = "cm", minw=2.12}, nodes={}},
     }},
     {n=G.UIT.R, config={minh = spacing*14},nodes={}},
     --  padding = 0.025
     {n=G.UIT.R, config={align = "cm"}, nodes={
-      {n=G.UIT.C, config={id = 'hud_ante',align = "cm", padding = -0.03, minw = 1.45, minh = 1, colour = temp_col, emboss = 0.05, r = 0.1}, nodes={
+      {n=G.UIT.C, config={id = 'hud_ante',align = "cm", padding = 0.05, minw = 1.45, minh = 1, colour = temp_col, emboss = 0.05, r = 0.1}, nodes={
         {n=G.UIT.R, config={align = "cm", minh = 0.33, maxw = 1.35}, nodes={
           {n=G.UIT.T, config={text = localize('k_ante'), scale = 0.85*scale, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
         }},
@@ -397,7 +397,7 @@ function create_UIBox_HUD()
         }},
       }},
       {n=G.UIT.C, config={minw = spacing},nodes={}},
-      {n=G.UIT.C, config={align = "cm", padding = -0.03, minw = 1.45, minh = 1, colour = temp_col, emboss = 0.05, r = 0.1}, nodes={
+      {n=G.UIT.C, config={align = "cm", padding = 0.05, minw = 1.45, minh = 1, colour = temp_col, emboss = 0.05, r = 0.1}, nodes={
         {n=G.UIT.R, config={align = "cm", maxw = 1.35}, nodes={
           {n=G.UIT.T, config={text = localize('k_round'), minh = 0.33, scale = 0.85*scale, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
         }},
@@ -408,7 +408,7 @@ function create_UIBox_HUD()
       {n=G.UIT.C, config={minw = spacing},nodes={}},
 
       --blind tracker
-      {n=G.UIT.C, config={align="cm",minw =2.075,colour=temp_col,emboss = 0.05,r=0.1,minh=1}, nodes={
+      {n=G.UIT.C, config={align="cm",minw =2.075,colour=temp_col,emboss = 0.05,r=0.1,minh=1, padding = 0.05}, nodes={
         {n=G.UIT.R, config={align = "cm", maxw = 1.35}, nodes={
           {n=G.UIT.T, config={text = 'Blinds', minh = 0.33, scale = 0.85*scale, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
         }},
@@ -422,12 +422,12 @@ function create_UIBox_HUD()
 contents.hand =
 {n=G.UIT.R, config={align = "cm", id = 'hand_text_area', colour = darken(G.C.BLACK, 0.1), r = 0.1, emboss = 0.05, padding = 0.03}, nodes={
   {n=G.UIT.C, config={align = "cm"}, nodes={
-    {n=G.UIT.R, config={align = "cm", minh = 1.1}, nodes={
+    {n=G.UIT.R, config={align = "cm", minh = 0.8355}, nodes={
       {n=G.UIT.O, config={id = 'hand_name', func = 'hand_text_UI_set',object = DynaText({string = {{ref_table = G.GAME.current_round.current_hand, ref_value = "handname_text"}}, colours = {G.C.UI.TEXT_LIGHT}, shadow = true, float = true, scale = scale*1.4})}},
       {n=G.UIT.O, config={id = 'hand_chip_total', func = 'hand_chip_total_UI_set',object = DynaText({string = {{ref_table = G.GAME.current_round.current_hand, ref_value = "chip_total_text"}}, colours = {G.C.UI.TEXT_LIGHT}, shadow = true, float = true, scale = scale*1.4})}},
       {n=G.UIT.T, config={ref_table = G.GAME.current_round.current_hand, ref_value='hand_level', scale = scale, colour = G.C.UI.TEXT_LIGHT, id = 'hand_level', shadow = true}}
     }},
-    {n=G.UIT.R, config={align = "cm", minh = 1, padding = 0.1}, nodes={
+    {n=G.UIT.R, config={align = "cm", minh = 0.8355, padding = 0.1}, nodes={
       {n=G.UIT.C, config={align = "cr", minw = 2, minh =1, r = 0.1,colour = G.C.UI_CHIPS, id = 'hand_chip_area', emboss = 0.05}, nodes={
           {n=G.UIT.O, config={func = 'flame_handler',no_role = true, id = 'flame_chips', object = Moveable(0,0,0,0), w = 0, h = 0}},
           {n=G.UIT.O, config={id = 'hand_chips', func = 'hand_chip_UI_set',object = DynaText({string = {{ref_table = G.GAME.current_round.current_hand, ref_value = "chip_text"}}, colours = {G.C.UI.TEXT_LIGHT}, font = G.LANGUAGES['en-us'].font, shadow = true, float = true, scale = scale*2.3})}},
@@ -454,7 +454,7 @@ contents.dollars_chips = {n=G.UIT.R, config={align = "cm",r=0.1, padding = 0,col
   {n=G.UIT.T, config={text =localize('k_lower_score'), scale = 0.42, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
 }}
 }},
-{n=G.UIT.C, config={align = "cm", minw = 3.3, minh = 0.7, r = 0.1, colour = G.C.DYN_UI.BOSS_DARK}, nodes={
+{n=G.UIT.C, config={align = "cm", minw = 3.3, minh = 0.615, r = 0.1, colour = G.C.DYN_UI.BOSS_DARK}, nodes={
 {n=G.UIT.O, config={w=0.5,h=0.5 , object = stake_sprite, hover = true, can_collide = false}},
 {n=G.UIT.B, config={w=0.1,h=0.1}},
 {n=G.UIT.T, config={ref_table = G.GAME, ref_value = 'chips_text', lang = G.LANGUAGES['en-us'], scale = 0.85, colour = G.C.WHITE, id = 'chip_UI_count', func = 'chip_UI_set', shadow = true}}
@@ -463,7 +463,7 @@ contents.dollars_chips = {n=G.UIT.R, config={align = "cm",r=0.1, padding = 0,col
 }}
 
 contents.buttons = {
-  {n=G.UIT.C, config={align = "cm", r=0.1, colour = G.C.CLEAR, shadow = true, id = 'button_area', padding = 0}, nodes={
+  {n=G.UIT.C, config={align = "cm", r=0.1, colour = G.C.CLEAR, shadow = true, id = 'button_area', padding = -0.0295}, nodes={
     {n=G.UIT.C, config={align = "cm", minh = 0.65, minw = 2.25, r = 0.1, hover = true, colour = G.C.ORANGE, button = "options", shadow = true}, nodes={
       {n=G.UIT.C, config={align = "cm", maxw = 1.4, focus_args = {button = 'start', orientation = 'bm'}, func = 'set_button_pip'}, nodes={
         {n=G.UIT.T, config={text = localize('b_options'), scale = scale, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
@@ -480,7 +480,7 @@ contents.buttons = {
       }},
     }}
 }
-  return {n=G.UIT.ROOT, config = {align = "cm", padding = -0.695, colour = G.C.UI.TRANSPARENT_DARK}, nodes={
+  return {n=G.UIT.ROOT, config = {align = "cm", padding = -0.69, colour = G.C.UI.TRANSPARENT_DARK}, nodes={
     {n=G.UIT.R, config = {align = "cm", padding= 0.05, colour = G.C.DYN_UI.MAIN, r=0.1}, nodes={
       {n=G.UIT.R, config={align = "cm", colour = G.C.DYN_UI.BOSS_DARK, r=0.1, minh = 30, padding = 0.08}, nodes={
         {n=G.UIT.R, config={align = "cm", minh = 0.3}, nodes={}},
@@ -490,6 +490,8 @@ contents.buttons = {
         contents.dollars_chips,
         contents.hand,
         {n=G.UIT.R, config={align = "cm", id = 'row_round'}, nodes={
+        -- {n=G.UIT.R, config={minh = spacing*2},nodes={}},
+
           {n=G.UIT.R, config={align = "cm"}, nodes=contents.round},
           
         }},
@@ -528,8 +530,8 @@ function set_screen_positions()
       G.consumeables.T.x = G.jokers.T.x + G.jokers.T.w + 0.2
       G.consumeables.T.y = 0
 
-      G.deck.T.x = G.TILE_W - G.deck.T.w - 16.225
-      G.deck.T.y = G.TILE_H - G.deck.T.h - 1.725
+      G.deck.T.x = G.TILE_W - G.deck.T.w - 16
+      G.deck.T.y = G.TILE_H - G.deck.T.h - 1.77
 
       G.discard.T.x = G.TILE_W - G.deck.T.w - 15
       G.discard.T.y = G.TILE_H - G.deck.T.h + 5
