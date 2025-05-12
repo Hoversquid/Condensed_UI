@@ -371,7 +371,7 @@ function create_UIBox_HUD()
       }},
       {n=G.UIT.C, config={align = "cm", minw=2.12}, nodes={}},
     }},
-    {n=G.UIT.R, config={minh = spacing*8},nodes={}},
+    {n=G.UIT.R, config={minh = spacing*10},nodes={}},
     {n=G.UIT.R, config={align = "cm"}, nodes={
       {n=G.UIT.C, config={align = "cm", padding = 0.05, minw = 1.415*2 + 0.15, minh = 1.225, colour = temp_col, emboss = 0.05, r = 0.1}, nodes={
         {n=G.UIT.R, config={align = "cm"}, nodes={
@@ -382,7 +382,7 @@ function create_UIBox_HUD()
       }},
       {n=G.UIT.C, config={align = "cm", minw=2.12}, nodes={}},
     }},
-    {n=G.UIT.R, config={minh = spacing*14},nodes={}},
+    {n=G.UIT.R, config={minh = spacing*12},nodes={}},
     --  padding = 0.025
     {n=G.UIT.R, config={align = "cm"}, nodes={
       {n=G.UIT.C, config={id = 'hud_ante',align = "cm", padding = 0.05, minw = 1.45, minh = 1, colour = temp_col, emboss = 0.05, r = 0.1}, nodes={
@@ -422,12 +422,12 @@ function create_UIBox_HUD()
 contents.hand =
 {n=G.UIT.R, config={align = "cm", id = 'hand_text_area', colour = darken(G.C.BLACK, 0.1), r = 0.1, emboss = 0.05, padding = 0.03}, nodes={
   {n=G.UIT.C, config={align = "cm"}, nodes={
-    {n=G.UIT.R, config={align = "cm", minh = 0.8355}, nodes={
+    {n=G.UIT.R, config={align = "cm", minh = 0.765}, nodes={
       {n=G.UIT.O, config={id = 'hand_name', func = 'hand_text_UI_set',object = DynaText({string = {{ref_table = G.GAME.current_round.current_hand, ref_value = "handname_text"}}, colours = {G.C.UI.TEXT_LIGHT}, shadow = true, float = true, scale = scale*1.4})}},
       {n=G.UIT.O, config={id = 'hand_chip_total', func = 'hand_chip_total_UI_set',object = DynaText({string = {{ref_table = G.GAME.current_round.current_hand, ref_value = "chip_total_text"}}, colours = {G.C.UI.TEXT_LIGHT}, shadow = true, float = true, scale = scale*1.4})}},
       {n=G.UIT.T, config={ref_table = G.GAME.current_round.current_hand, ref_value='hand_level', scale = scale, colour = G.C.UI.TEXT_LIGHT, id = 'hand_level', shadow = true}}
     }},
-    {n=G.UIT.R, config={align = "cm", minh = 0.8355, padding = 0.1}, nodes={
+    {n=G.UIT.R, config={align = "cm", minh = 0.765, padding = 0.1}, nodes={
       {n=G.UIT.C, config={align = "cr", minw = 2, minh =1, r = 0.1,colour = G.C.UI_CHIPS, id = 'hand_chip_area', emboss = 0.05}, nodes={
           {n=G.UIT.O, config={func = 'flame_handler',no_role = true, id = 'flame_chips', object = Moveable(0,0,0,0), w = 0, h = 0}},
           {n=G.UIT.O, config={id = 'hand_chips', func = 'hand_chip_UI_set',object = DynaText({string = {{ref_table = G.GAME.current_round.current_hand, ref_value = "chip_text"}}, colours = {G.C.UI.TEXT_LIGHT}, font = G.LANGUAGES['en-us'].font, shadow = true, float = true, scale = scale*2.3})}},
@@ -531,7 +531,7 @@ function set_screen_positions()
       G.consumeables.T.y = 0
 
       G.deck.T.x = G.TILE_W - G.deck.T.w - 16
-      G.deck.T.y = G.TILE_H - G.deck.T.h - 1.77
+      G.deck.T.y = G.TILE_H - G.deck.T.h - 1.81
 
       G.discard.T.x = G.TILE_W - G.deck.T.w - 15
       G.discard.T.y = G.TILE_H - G.deck.T.h + 5
