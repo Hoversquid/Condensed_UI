@@ -693,12 +693,3 @@ function Condensed_UI:create_UIBox_blind_popup(blind, choice, vars)
   {n=G.UIT.R, config={align = "cm"}, nodes=blind_text},
  }}
 end
-
-SMODS.Tag:take_ownership("orbital", {
-  preview_ui = function(self, tag)
-      local hand_center = SMODS.PokerHands[tag.ability.orbital_hand]
-      local hand_sprite = Sprite(0, 0, 1, 0.13 / 0.53,
-          G.ASSET_ATLAS[hand_center.atlas or "nap_poker_hands"], hand_center.pos or { x = 0, y = 0 })
-      return { n = G.UIT.O, config = { object = hand_sprite } }
-  end
-}, true)
