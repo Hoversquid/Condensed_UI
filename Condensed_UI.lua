@@ -586,65 +586,75 @@ local start_run_hook = Game.start_run
 function Game:start_run(args)
   -- print("START RUN")
   start_run_hook(self,args)
-  G.E_MANAGER:add_event(Event({
-    trigger = 'after',
-    delay = 0.25,
-    func = function()
-      G.HUD_blind_tracker = Condensed_UI{predict = false}
-      return true
-    end}))
+  G.HUD_blind_tracker = Condensed_UI{predict = false}
+  -- G.E_MANAGER:add_event(Event({
+  --   trigger = 'after',
+  --   delay = 0.25,
+  --   func = function()
+  --     G.HUD_blind_tracker = Condensed_UI{predict = false}
+  --     return true
+  --   end}))
 
 end
 
 local new_round_hook = new_round
 function new_round()
   new_round_hook()
-  G.E_MANAGER:add_event(Event({
-    trigger = 'after',
-    delay = 0.25,
-    func = function()
-      if G.HUD_blind_tracker then G.HUD_blind_tracker:reload_UI() end
-      return true
-    end}))
+  if G.HUD_blind_tracker then G.HUD_blind_tracker:reload_UI() end
+  -- G.E_MANAGER:add_event(Event({
+  --   trigger = 'after',
+  --   delay = 0.25,
+  --   func = function()
+  -- if G.HUD_blind_tracker then G.HUD_blind_tracker:reload_UI()
+  --     return true
+  --   end}))
 end
 
 local reroll_boss_hook = G.FUNCS.reroll_boss
 function G.FUNCS.reroll_boss(e)
   reroll_boss_hook(e)
-  G.E_MANAGER:add_event(Event({
-    trigger = 'after',
-    delay = 0.25,
-    func = function()
-      if G.HUD_blind_tracker then G.HUD_blind_tracker:reroll_boss() end
-      return true
-    end}))
+  if G.HUD_blind_tracker then G.HUD_blind_tracker:reroll_boss() end
+
+  -- G.E_MANAGER:add_event(Event({
+  --   trigger = 'after',
+  --   delay = 0.25,
+  --   func = function()
+  --     if G.HUD_blind_tracker then G.HUD_blind_tracker:reroll_boss() end
+  --     return true
+  --   end}))
 end
+
 local skip_blind_hook = G.FUNCS.skip_blind
 G.FUNCS.skip_blind = function(e)
   skip_blind_hook(e)
-  G.E_MANAGER:add_event(Event({
-    trigger = 'after',
-    delay = 0.25,
-    func = function()
-    if G.HUD_blind_tracker then G.HUD_blind_tracker:reload_UI() end
-    return true
-    end}))
+  if G.HUD_blind_tracker then G.HUD_blind_tracker:reload_UI() end
+
+  -- G.E_MANAGER:add_event(Event({
+  --   trigger = 'after',
+  --   delay = 0.25,
+  --   func = function()
+  --   if G.HUD_blind_tracker then G.HUD_blind_tracker:reload_UI() end
+  --   return true
+  --   end}))
 end
 
 local cash_out_hook = G.FUNCS.cash_out
 function G.FUNCS.cash_out(e)
   cash_out_hook(e)
   if G.GAME.round_resets.blind_states["Small"] ~= "Defeated" then
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.25,
-        func = function()
-          print("RELOADING UI ON SMALL BLIND")
-          G.HUD_blind_tracker.uibox:remove()
-          G.HUD_blind_tracker = Condensed_UI{predict = false}
-          return true
-        end
-    }))
+    print("RELOADING UI ON SMALL BLIND")
+    G.HUD_blind_tracker.uibox:remove()
+    G.HUD_blind_tracker = Condensed_UI{predict = false}
+    -- G.E_MANAGER:add_event(Event({
+    --   trigger = 'after',
+    --   delay = 0.25,
+    --     func = function()
+    --       print("RELOADING UI ON SMALL BLIND")
+    --       G.HUD_blind_tracker.uibox:remove()
+    --       G.HUD_blind_tracker = Condensed_UI{predict = false}
+    --       return true
+    --     end
+    -- }))
   end
 end
 
