@@ -177,7 +177,7 @@ function Condensed_UI:create_ante_sprites(predict, types)
           local tag_sprite
           if tag then
               local tag_object
-              self:set_orbitals(choice)
+              -- self:set_orbitals(choice)
               tag_object = Tag(tag, nil, choice)
               _, tag_sprite = tag_object:generate_UI(0.375)
 

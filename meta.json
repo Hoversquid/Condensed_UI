@@ -5,7 +5,7 @@
     "author": ["Hoversquid"],
     "description": "Pushes all the UI to the left and adds a Blind Tracker for the Ante.",
     "main_file": "Condensed_UI.lua",
-    "priority": 3,
+    "priority": -100000000,
     "badge_colour": "c7638f",
     "dependencies": [
         "Steamodded (>=1.*)"
